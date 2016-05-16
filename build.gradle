@@ -1,0 +1,22 @@
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.6'
+}
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala']
+        }
+    }
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.with {
+        useAnt = true // comment this line to use zinc and compile ws without any errors
+    }
+}
